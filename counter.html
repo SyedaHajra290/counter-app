@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .counter-container {
+    text-align: center;
+    margin-top: 100px;
+    font-family: sans-serif;
+}
+
+#value {
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background: transparent;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #333;
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <div class="counter-container">
+    <h1>Counter</h1>
+    <span id="value">0</span>
+    <div class="button-container">
+        <button class="btn decrease">Decrease</button>
+        <button class="btn reset">Reset</button>
+        <button class="btn increase">Increase</button>
+    </div>
+</div>
+</body>
+<script>
+    // Set initial count
+let count = 0;
+
+// Select value and buttons
+const value = document.querySelector('#value');
+const btns = document.querySelectorAll('.btn');
+
+btns.forEach(function (btn) {
+  btn.addEventListener('click', function (e) {
+    const styles = e.currentTarget.classList;
+    
+    // Logic for changing the count
+    if (styles.contains('decrease')) {
+      count--;
+    } else if (styles.contains('increase')) {
+      count++;
+    } else {
+      count = 0;
+    }
+
+    // Optional: Change colors based on positive/negative
+    if (count > 0) {
+      value.style.color = "green";
+    } else if (count < 0) {
+      value.style.color = "red";
+    } else {
+      value.style.color = "#222";
+    }
+
+    value.textContent = count;
+  });
+});
+</script>
+</html>
